@@ -1,0 +1,72 @@
+.editName {
+  color: #64B5F6;
+  user-select: none;
+}
+
+.editName:hover {
+  color: #1E88E5;
+  cursor: pointer;
+  width: auto;
+}
+
+.delete {
+  color: #F44336;
+  user-select: none;
+  margin-left: 75%;
+}
+
+.delete:hover {
+  color: #C62828;
+  cursor: pointer;
+}
+
+.items-trackers li{
+  list-style-type: none;
+}
+
+.items-trackers{
+  background-color: #ECEFF1;
+  padding: 15px;
+  border-radius: 15px;
+  word-break: break-word;
+  width: 274px;
+}
+
+.items-trackers li:nth-child(4){
+  margin-bottom: 20px;
+}
+
+.items-trackers__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.checkPoint {
+  height: 30px;
+  width: 274px;
+  margin-bottom: 15px;
+  background: #E0E0E0;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkPoint:hover {
+  background: #BDBDBD;
+}
+
+.checkPoint:hover {
+  cursor: pointer;
+}
+
+.checkPoint-disabled {
+  user-select: none;
+  height: 30px;
+  width: 274px;
+  margin-bottom: 15px;
+  background: white;
+  border: solid 2px #E0E0E0;
+  border-radius: 5px;
+}

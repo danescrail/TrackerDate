@@ -1,0 +1,77 @@
+@media (max-width: 400px) {
+  li {
+    font-size: 12px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .items-tracker>
+  .tracker__item {
+    width: 270px;
+  }
+
+  .container__form_create {
+    margin-top: 15px;
+  }
+
+  .form_create-tracker p {
+    font-size: 12px;
+  }
+
+  .form_create-tracker input {
+    font-size: 12px;
+  }
+
+  .form_create-tracker span {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  h3{
+    font-size: 16px;
+  }
+
+  .block__btn-create{
+
+  }
+
+  .week input{
+    width: 15px;
+  }
+
+  .form_create-tracker select {
+    font-size: 12px;
+  }
+
+  .editName {
+    font-size: 12px;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  .main-container {
+    margin: 12px 20px 20px 20px;
+  }
+
+  h1{
+    font-size: 20px;
+    margin-top: 0px;
+  }
+
+  main p{
+    font-size: 12px;
+  }
+
+  .items-table td {
+    font-size: 12px;
+  }
+
+  .table-tracker__block {
+    font-size: 12px;
+  }
+}

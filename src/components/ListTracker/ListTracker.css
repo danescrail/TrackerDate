@@ -1,0 +1,39 @@
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+.items-tracker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.items-tracker >
+.tracker__item {
+  width: 294px;
+  background: #ECEFF1;
+  margin-bottom: 5px;
+  text-align: center;
+  list-style-type: none;
+  height: auto;
+  border: none;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  word-break: break-all;
+  padding: 5px;
+}
+
+.items-tracker >
+.tracker__item:hover {
+  background: #BDBDBD;
+  cursor: pointer;
+}
+
+.items-tracker__header {
+  margin-bottom: 15px;
+}

@@ -1,0 +1,28 @@
+.header-items {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: #ECEFF1;
+}
+
+.header-items li {
+  margin-left: 30px;
+  list-style-type: none;
+}
+
+.header-items li:nth-child(1){
+  margin-left: 0px;
+}
+
+.header-items li:hover {
+  color: #424242;
+  cursor: pointer;
+}
+
+.header-items-item-active {
+  border-bottom: 2px solid #424242;
+  color: #424242;
+
+}

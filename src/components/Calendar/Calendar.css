@@ -1,0 +1,33 @@
+.table-tracker {
+  margin-top: 5px;
+}
+
+.table-tracker__block {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.table-tracker__block thead{
+  text-align: center;
+  font-weight: bold;
+}
+
+.items-table td {
+ text-align: center;
+ border: 1px solid black;
+ padding: 3px 5px 3px 5px;
+ user-select: none;
+}
+
+.table-item__active {
+  background: #E0E0E0;
+}
+
+.table-item__active:hover {
+  background: #BDBDBD;
+  cursor: pointer;
+}
+
+.table-item {
+  
+}
