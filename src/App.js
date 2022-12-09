@@ -22,15 +22,6 @@ function App() {
   const [dateTracker, setDateTracker] = useState('');
   const [frequency, setFrequency] = useState('Каждый день');
   const [countDays, setCountDays] = useState('');
-  const [week, setWeek] = useState({
-    'Monday': false,
-    'Tuesday': false,
-    'Wednesday': false,
-    'Thursday': false,
-    'Friday': false,
-    'Saturday': false,
-    'Sunday': false
-  });
   const [data, setData] = useState([]);
   const [editValue, setEditValue] = useState('');
   const [page, setPage] = useState(0);
@@ -46,9 +37,6 @@ function App() {
       'type_tracker': typeDate,
       'count_days': countDays,
       'frequency': frequency,
-      'week': week,
-      'isWeek': isWeek(),
-      'countDaysWeek': getDaysWeek(),
       'date_create': getDate(),
       'isEditName': false,
       'isSelect': false,
@@ -58,26 +46,6 @@ function App() {
 
   function getDate() {
     return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
-  }
-
-  function getDaysWeek() {
-    let sum = 0;
-    for (let day in week) {
-      if (week[day]) {
-        sum++;
-      }
-    }
-
-    return sum;
-  }
-
-  function isWeek() {
-    for (let day in week) {
-      if (week[day]) {
-        return true;
-      }
-    }
-    return false;
   }
 
   function isActiveOn(id) {
@@ -144,16 +112,7 @@ function App() {
           } else if (isNaN(diffDateDay)) {
           } else {
             alert('Вы не отметились вовремя, трекер был принудительно удален, прожито дней с отметками: ' + durationTrackerDays + ' / ' + getTime(id));
-            deleteTracker (id);
-          }
-        } else if (obj.frequency === 'Выбрать дни недели') {
-          for (let key in obj['week']) {
-            if (obj['week'][key] === true && key === moment().format('dddd') && lastElemIdTracker !== fullDate) {
-              isActiveOff(id);
-              break;
-            } else {
-              isActiveOn(id);
-            }
+            deleteTracker(id);
           }
         } else if (obj.frequency === 'Ввести через сколько дней') {
           if (diffDateDay === Number(obj.count_days)) {
@@ -174,8 +133,8 @@ function App() {
   function getTime(id) {
     let getDays;
 
-    for (let obj of data){
-      if (obj.id === id){
+    for (let obj of data) {
+      if (obj.id === id) {
         if (obj.type_tracker === 'В днях') {
           getDays = obj.duration_tracker;
         } else if (obj.type_tracker === 'В месяцах') {
@@ -183,8 +142,8 @@ function App() {
         } else if (obj.type_tracker === 'Без ограничений (бесконечно)') {
           getDays = Infinity;
         }
+        break;
       }
-      break;
     }
 
     return Number(getDays);
@@ -260,27 +219,12 @@ function App() {
 
   function changeFrequency(event) {
     setFrequency(event.target.value);
-    setWeek({
-      'Monday': false,
-      'Tuesday': false,
-      'Wednesday': false,
-      'Thursday': false,
-      'Friday': false,
-      'Saturday': false,
-      'Sunday': false
-    });
-    setCountDays('');
-  }
-
-  function changeCheckBoxWeek(event) {
-    let copy = Object.assign({}, week);
-    copy[event.target.value] = !copy[event.target.value];
-    setWeek(copy);
+    setCountDays('1');
   }
 
   function changeCountDays(event) {
-    if (+event.target.value <= 0 || event.target.value === '-') {
-      setCountDays('');
+    if (+event.target.value <= 0 || event.target.value === '-' || event.target.value === '') {
+      setCountDays(1);
     } else if (+event.target.value > 365) {
       setCountDays(365);
     } else {
@@ -300,20 +244,12 @@ function App() {
       setTypeDate('В днях');
     }
 
+
     setNameTracker('');
     setTypeDate('В днях');
     setDateTracker('');
     setFrequency('Каждый день');
     setCountDays('');
-    setWeek({
-      'Monday': false,
-      'Tuesday': false,
-      'Wednesday': false,
-      'Thursday': false,
-      'Friday': false,
-      'Saturday': false,
-      'Sunday': false
-    });
 
     setPopup(
       <div className="fixed-overlay" onClick={() => popupHide()}>
@@ -341,12 +277,8 @@ function App() {
       }
     }));
 
-    let year = date.getFullYear();
-    let month = date.getMonth();
-    let day = date.getDate();
-
     let copy = Object.assign({}, objIdTracker);
-    copy[id].push(year + '-' + month + '-' + day);
+    copy[id].push(getDate());
     setObjIdTracker(copy);
   }
 
@@ -369,7 +301,6 @@ function App() {
         changeTypeDateTracker={changeTypeDateTracker}
         changeCountDays={changeCountDays}
         createTracker={createTracker}
-        changeCheckBoxWeek={changeCheckBoxWeek}
       />
       : ''
     }
